@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+#container-board {
+    border-style: solid;
+    border-radius: 20px;
+    width: 1000px;
+    height: 1000px;
+    background-color: rgb(58, 25, 166);
+    margin: 0 auto;
+    padding: 5px;
+    
+    
+}
+
+h1 {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+
+.empty {
+    border-style: solid;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    color: blueviolet;
+    border-radius: 50%;
+    background-color: rgb(45, 206, 20);
+}
+
+.topRow {
+
+ 
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: solid 1px;
+   
+    border-radius: 50%;
+    background-color: white;
+
+}
+
+#C0 {
+    background-color: white;
+}
+
+.player-one {
+    background-color: red;
+}
+
+.player-two {
+    background-color: yellow;
+}
+
+.occupied {
+
+    border-color: none;
+}
+
+.not-playable {    
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;    
+    border-radius: 50%;
+}
