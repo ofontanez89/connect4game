@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    let playerOne;
-    let playerTwo;
+    
     let playerOneTurn = true
 
     //player 1 is red
@@ -10,23 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Getting elements and assigning them to a variable to be able to select the whole row or column if needed
 
-     columnSelect0 = document.getElementById('C0');
-     columnSelect1 = document.getElementById('C1');
-     columnSelect2 = document.getElementById('C2');
-     columnSelect3 = document.getElementById('C3');
-     columnSelect4 = document.getElementById('C4');
-     columnSelect5 = document.getElementById('C5');
-     columnSelect6 = document.getElementById('C6');
+    columnSelect0 = document.getElementById('C0');
+    columnSelect1 = document.getElementById('C1');
+    columnSelect2 = document.getElementById('C2');
+    columnSelect3 = document.getElementById('C3');
+    columnSelect4 = document.getElementById('C4');
+    columnSelect5 = document.getElementById('C5');
+    columnSelect6 = document.getElementById('C6');
+    column0 = document.querySelectorAll('.column0');
+    column1 = document.getElementsByClassName('column1');
+    column2 = document.getElementsByClassName('column2');
+    column3 = document.getElementsByClassName('column3');
+    column4 = document.getElementsByClassName('column4');
+    column5 = document.getElementsByClassName('column5');
+    column6 = document.getElementsByClassName('column6');
 
-     column0 = document.querySelectorAll('.column0');
-     column1 = document.getElementsByClassName('column1');
-     column2 = document.getElementsByClassName('column2');
-     column3 = document.getElementsByClassName('column3');
-     column4 = document.getElementsByClassName('column4');
-     column5 = document.getElementsByClassName('column5');
-     column6 = document.getElementsByClassName('column6');
-
-     allDivs = document.querySelectorAll('#container-board div');
+    allDivs = document.querySelectorAll('#container-board div');
 
     // console.log(allDivs)
 
@@ -147,9 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         allDivs[i].classList.add('occupied')
                         allDivs[i].classList.add('player-one')
-                        
+                        checkForWinner()                        
                     
-                        playerOneTurn = false}
+                        playerOneTurn = false
+                    }
                     
 
                 } else { 
@@ -163,7 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else {
                     
                         allDivs[i].classList.add('occupied')
-                        allDivs[i].style.backgroundColor= 'yellow'
+                        allDivs[i].classList.add('player-two')
+                        checkForWinner()
                     
                         playerOneTurn = true
                     }
@@ -177,54 +177,150 @@ document.addEventListener('DOMContentLoaded', () => {
         
     }
        
+    //Game Logic to determine if there is a winner   
        
        
        
        
-       
-       
-       
-       
-       
-       
-    //    if (playerOneTurn === true) {
-                    
-    //              {
-                
-    //                     allDivs[i].addEventListener('click', () => {
-                    
-    //                     allDivs[i].classList.add('occupied')
-    //                     allDivs[i].classList.add('player-one')
+    // ARRAY OF WINNING ARRAYS
 
-    //                     // allDivs[i].style.backgroundColor = "red"
-                   
-                    
-    //                     playerOneTurn = false
-    //                 })
+    const winningArrays = [
+
+        //First Row
+        [0, 1, 2, 3],
+        [1, 2, 3, 4],
+        [2, 3, 4, 5],
+        [3, 4, 5, 6],
         
-    //             } else { playerOneTurn = true}
-                
-    //     } else { 
-    //                 if ( allDivs[i + 7].classList.contains('occupied')) {
+        //Second Row
+        [7, 8, 9, 10],
+        [8, 9, 10, 11],
+        [9, 10, 11, 12],
+        [10, 11, 12, 13],
 
-    //                     allDivs[i].addEventListener('click', () => {
+        //Third Row
+        [14, 15, 16, 17],
+        [15, 16, 17, 18],
+        [17, 18, 19, 20],
+        [18, 19, 20, 21],
 
-    //                     allDivs[i].classList.add('occupied')
-    //                     allDivs[i].classList.add('player-two')
+        //Fourth Row
+        [21, 22, 23, 24],
+        [22, 23, 24, 25],
+        [23, 24, 25, 26],
+        [24, 25, 26, 27],
 
-    //                     // allDivs[i].style.backgroundColor = "yellow"
-                    
-    //                     playerOneTurn = true
-    //                     }) 
+        //Sixth Row
+        [35, 36, 37, 38],
+        [36, 37, 38, 39],
+        [37, 38, 39, 40],
+        [38, 39, 40, 41],
 
-    //                 } else {playerOneTurn = false}  
+        //First Column
+        [0, 7, 14, 21],
+        [7, 14, 21, 28],
+        [14, 21, 28, 35],
+        
+        //Second Column
+        [1, 8, 15, 22],
+        [8, 15, 22, 29],
+        [15, 22, 29, 36],
 
-                
+        //Third Column
+        [2, 9, 16, 23],
+        [9, 16, 23, 30],
+        [16, 23, 30, 37],
 
+        //Fourth Column
+        [3, 10, 17, 24],
+        [10, 17, 24, 31],
+        [17,24, 31, 38],
+
+        //Fifth Column
+        [4, 11, 18, 25],
+        [11, 18, 25, 32],
+        [18, 25, 32, 39],
+
+        //Sixth Column
+        [5, 12, 19, 26],
+        [12, 19, 26, 33],
+        [19, 26, 33, 40],
+
+        //Seventh column
+        [6, 13, 20, 27],
+        [13, 20, 27, 34],
+        [20, 27, 34, 41],
+
+        //Diagonal Top Left
+        [0, 8, 16, 24],
+        [8 ,16, 24, 32],
+        [16, 24, 32, 40],
+        
+        [7, 15, 23, 31],
+        [15, 23, 31, 39],
+        [14, 22, 30, 38],
+
+        [1, 9, 17, 25],
+        [9, 17, 25, 33],
+        [17, 25, 33, 41],
+        
+        [2, 10, 18, 26],
+        [10, 18, 26, 34],
+        [3, 11, 19, 27],
+
+        //Diagonal Bottom Left
+        [35, 29, 23, 17],
+        [29, 23, 17, 11],
+        [23, 17, 11, 5],
+
+        [28, 22, 16, 10],
+        [22, 16, 10, 4],
+        [21, 15, 9, 3],
+
+        [36, 30, 24, 18],
+        [30, 24, 18, 12],
+        [24, 18, 12, 6]
+    ]
+
+    console.log(allDivs)
+    
+    
+    function checkForWinner() {
+
+        for (let i = 0; i < winningArrays.length; i++) {
+
+            const circleOne = allDivs[winningArrays[i][0]]
+            const circleTwo = allDivs[winningArrays[i][1]]
+            const circleThree = allDivs[winningArrays[i][2]]
+            const circleFour = allDivs[winningArrays[i][3]]
+
+            if (
+                circleOne.classList.contains('player-one') &&
+                circleTwo.classList.contains('player-one') &&
+                circleThree.classList.contains('player-one') &&
+                circleFour.classList.contains('player-one')) {
+
+                alert('Player One Wins')
+            }
+
+            if (
+                circleOne.classList.contains('player-two') &&
+                circleTwo.classList.contains('player-two') &&
+                circleThree.classList.contains('player-two') &&
+                circleFour.classList.contains('player-two')) {
+
+                alert('Player Two Wins')
              
+                
+            }
 
-    //             }
-
+        }
+    }
+       
+       
+       
+       
+   
 
                    
         

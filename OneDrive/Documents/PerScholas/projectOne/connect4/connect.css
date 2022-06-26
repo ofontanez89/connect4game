@@ -2,12 +2,16 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    background-image: url("images/backG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 #container-board {
     border-style: solid;
     border-radius: 20px;
     width: 1000px;
-    height: 1000px;
+    height: 780px;
     background-color: rgb(58, 25, 166);
     margin: 0 auto;
     padding: 5px;
@@ -19,6 +23,8 @@ h1 {
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bolder;
+    color: greenyellow;
+    font-size: 10px;
 }
 
 .empty {
@@ -39,10 +45,11 @@ h1 {
     width: 100px;
     height: 100px;
     margin: 10px;
-    border: solid 1px;
+    border: 1px;
+    opacity: 10;
    
     border-radius: 50%;
-    background-color: white;
+    background-color: none;
 
 }
 
@@ -52,10 +59,12 @@ h1 {
 
 .player-one {
     background-color: red;
+    background: radial-gradient(circle, rgba(32,0,36,1) 0%, rgba(255,0,0,1) 9%, rgba(121,73,9,1) 67%);
 }
 
 .player-two {
     background-color: yellow;
+    background: radial-gradient(circle, rgba(30,0,36,1) 0%, rgba(215,255,0,1) 12%, rgba(134,168,17,1) 67%);
 }
 
 .occupied {
