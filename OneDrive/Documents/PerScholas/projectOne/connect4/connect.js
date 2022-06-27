@@ -9,22 +9,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Getting elements and assigning them to a variable to be able to select the whole row or column if needed
 
-    columnSelect0 = document.getElementById('C0');
-    columnSelect1 = document.getElementById('C1');
-    columnSelect2 = document.getElementById('C2');
-    columnSelect3 = document.getElementById('C3');
-    columnSelect4 = document.getElementById('C4');
-    columnSelect5 = document.getElementById('C5');
-    columnSelect6 = document.getElementById('C6');
-    column0 = document.querySelectorAll('.column0');
-    column1 = document.getElementsByClassName('column1');
-    column2 = document.getElementsByClassName('column2');
-    column3 = document.getElementsByClassName('column3');
-    column4 = document.getElementsByClassName('column4');
-    column5 = document.getElementsByClassName('column5');
-    column6 = document.getElementsByClassName('column6');
+    const columnSelect0 = document.getElementById('C0');
+    const columnSelect1 = document.getElementById('C1');
+    const columnSelect2 = document.getElementById('C2');
+    const columnSelect3 = document.getElementById('C3');
+    const columnSelect4 = document.getElementById('C4');
+    const columnSelect5 = document.getElementById('C5');
+    const columnSelect6 = document.getElementById('C6');
+    const column0 = document.querySelectorAll('.column0');
+    const column1 = document.getElementsByClassName('column1');
+    const column2 = document.getElementsByClassName('column2');
+    const column3 = document.getElementsByClassName('column3');
+    const column4 = document.getElementsByClassName('column4');
+    const column5 = document.getElementsByClassName('column5');
+    const column6 = document.getElementsByClassName('column6');
+    // const displayPlayer1 = document.querySelector('#player-turn')
+    // const displayPlayer2 = document.querySelector('#player-turn-two')
+    // const image1 = document.createElement('img')
+    // image1.src = '/Images/controller.png'
 
-    allDivs = document.querySelectorAll('#container-board div');
+
+    const allDivs = document.querySelectorAll('#container-board div');
 
     // console.log(allDivs)
 
@@ -39,11 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
         column0[i].addEventListener('mouseenter', function() {
 
             playerOneTurn ? columnSelect0.style.backgroundColor= 'red' : columnSelect0.style.backgroundColor= "yellow"
+            columnSelect0.style.opacity = "1";
     
         })
 
         column0[i].addEventListener('mouseout', function () {
-            columnSelect0.style.backgroundColor= 'white'
+            // columnSelect0.style.backgroundColor= 'white'
+            columnSelect0.style.opacity= "0"
         })
     }
 
@@ -52,11 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
     column1[i].addEventListener('mouseenter', function() {
 
     playerOneTurn ? columnSelect1.style.backgroundColor= 'red' : columnSelect1.style.backgroundColor= "yellow"
+    columnSelect1.style.opacity= "1"
     
     })
 
     column1[i].addEventListener('mouseout', function () {
-    columnSelect1.style.backgroundColor= 'white'
+    columnSelect1.style.opacity = "0";
     })
     }
 
@@ -65,11 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
     column2[i].addEventListener('mouseenter', function() {
 
     playerOneTurn ? columnSelect2.style.backgroundColor= 'red' : columnSelect2.style.backgroundColor= "yellow"
+    columnSelect2.style.opacity= "1"
     
     })
 
     column2[i].addEventListener('mouseout', function () {
-    columnSelect2.style.backgroundColor= 'white'
+    // columnSelect2.style.backgroundColor= 'white'
+    columnSelect2.style.opacity= "0"
     })
     }
 
@@ -78,11 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     column3[i].addEventListener('mouseenter', function() {
 
     playerOneTurn ? columnSelect3.style.backgroundColor= 'red' : columnSelect3.style.backgroundColor= "yellow"
+    columnSelect3.style.opacity= "1"
     
     })
 
     column3[i].addEventListener('mouseout', function () {
-    columnSelect3.style.backgroundColor= 'white'
+    // columnSelect3.style.backgroundColor= 'white'
+    columnSelect3.style.opacity= "0"
     })
     }
 
@@ -91,11 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
     column4[i].addEventListener('mouseenter', function() {
 
     playerOneTurn ? columnSelect4.style.backgroundColor= 'red' : columnSelect4.style.backgroundColor= "yellow"
+    columnSelect4.style.opacity= "1"
     
     })
 
     column4[i].addEventListener('mouseout', function () {
-    columnSelect4.style.backgroundColor= 'white'
+    // columnSelect4.style.backgroundColor= 'white'
+    columnSelect4.style.opacity= "0"
     })
     }
 
@@ -104,11 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
     column5[i].addEventListener('mouseenter', function() {
 
     playerOneTurn ? columnSelect5.style.backgroundColor= 'red' : columnSelect5.style.backgroundColor= "yellow"
+    columnSelect5.style.opacity= "1"
     
     })
 
     column5[i].addEventListener('mouseout', function () {
-    columnSelect5.style.backgroundColor= 'white'
+    // columnSelect5.style.backgroundColor= 'white'
+    columnSelect5.style.opacity= "0"
+
     })
     }
 
@@ -117,14 +134,20 @@ document.addEventListener('DOMContentLoaded', () => {
     column6[i].addEventListener('mouseenter', function() {
 
     playerOneTurn ? columnSelect6.style.backgroundColor= 'red' : columnSelect6.style.backgroundColor= "yellow"
+    columnSelect6.style.opacity= "1"
     
     })
 
     column6[i].addEventListener('mouseout', function () {
-    columnSelect6.style.backgroundColor= 'white'
+    // columnSelect6.style.backgroundColor= 'blue'
+    columnSelect6.style.opacity= "0"
     })
     }
 
+    //Display logo for whos turn it is
+
+    // playerOneTurn ? displayPlayer1.innerHTML= <img src="Images/controller.png"></img> : displayPlayer2.innerHTML= <img src="Images/controller.png"></img>
+ 
     // Depending on Player if click on column fill next available empty div. Add the class occupied.
 
     for (let i = 0; i < allDivs.length; i++) {
@@ -134,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (allDivs[i + 7].classList.contains('occupied')){
 
                 if (playerOneTurn === true) {
+
+                    
 
                     if (allDivs[i].classList.contains('occupied')) {
                         
@@ -182,9 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
        
        
        
-    // ARRAY OF WINNING ARRAYS
+    // ARRAY OF WINNING Combos
+    // console log allDivs and check array positions 
 
-    const winningArrays = [
+    const winningCombos = [
 
         //First Row
         [0, 1, 2, 3],
@@ -286,13 +312,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     function checkForWinner() {
+        //Check allDivs against the winningCombos
 
-        for (let i = 0; i < winningArrays.length; i++) {
+        for (let i = 0; i < winningCombos.length; i++) {
 
-            const circleOne = allDivs[winningArrays[i][0]]
-            const circleTwo = allDivs[winningArrays[i][1]]
-            const circleThree = allDivs[winningArrays[i][2]]
-            const circleFour = allDivs[winningArrays[i][3]]
+            const circleOne = allDivs[winningCombos[i][0]]
+            const circleTwo = allDivs[winningCombos[i][1]]
+            const circleThree = allDivs[winningCombos[i][2]]
+            const circleFour = allDivs[winningCombos[i][3]]
 
             if (
                 circleOne.classList.contains('player-one') &&
