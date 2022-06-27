@@ -5,6 +5,7 @@ body {
     background-image: url("images/backG.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: 175vh;
 }
 
 #container-board {

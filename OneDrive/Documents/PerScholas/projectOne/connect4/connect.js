@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     
     let playerOneTurn = true
+    
+    
 
     //player 1 is red
     //player 2 is yellow
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const column4 = document.getElementsByClassName('column4');
     const column5 = document.getElementsByClassName('column5');
     const column6 = document.getElementsByClassName('column6');
+    // const resetButton = document.getElementsByClassName('restart');
+
     // const displayPlayer1 = document.querySelector('#player-turn')
     // const displayPlayer2 = document.querySelector('#player-turn-two')
     // const image1 = document.createElement('img')
@@ -144,6 +147,24 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     }
 
+    // resetButton.addEventListener("click", restart())
+
+    // function restart() {
+        
+    //     for (let i = 0; i < allDivs.length; i++) {
+
+    //         if (allDivs[i].classList.contains('empty')) {
+
+    //             allDivs[i].classList.remove('occupied')
+    //             allDivs[i].classList.remove("player-one")
+    //             allDivs[i].classList.remove('player-two')
+    //         }     
+    //     }
+    // }
+
+
+
+
     //Display logo for whos turn it is
 
     // playerOneTurn ? displayPlayer1.innerHTML= <img src="Images/controller.png"></img> : displayPlayer2.innerHTML= <img src="Images/controller.png"></img>
@@ -203,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
        
     //Game Logic to determine if there is a winner   
-       
+      
        
        
        
@@ -308,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [24, 18, 12, 6]
     ]
 
-    console.log(allDivs)
+    // console.log(allDivs)
     
     
     function checkForWinner() {
@@ -344,8 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
        
-       
-       
+      
        
    
 
